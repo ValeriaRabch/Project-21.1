@@ -4,52 +4,13 @@
 
 using namespace std;
 
-int Line(char* link) {
-
-	FILE* file;
-	file = fopen(link, "r");
-	char s = fgetc(file);
-	int count = 1;
-	while (s != EOF) {
-		if (s == '\n') {
-			count++;
-		}
-		s = fgetc(file);
-	}
-	fclose(file);
-	return count;
-}
-
-void FullMassive(char* link, char arr[50][30], int end) {
-
-	FILE* file;
-	file = fopen(link, "r");
-
-	for (int i = 0; i < end - 1; i++) {
-		fgets(arr[i], 50, file);
-	}
-	fclose(file);
-}
-
-int Max(int arr[], int size) {
-
-	int max = arr[0], index = 0;
-	for (int i = 1; i < size; i++) {
-		if (arr[i] > max) {
-			max = arr[i];
-			index = i;
-		}
-	}
-	return index;
-}
-
 char* MostFrequentString(char* link) {
 	FILE* file;
 	file = fopen(link, "r");
 
 	int end = Line(link);
 	char arr[50][30];
-	int* line = new int (end);
+	int* line = new int(end);
 
 	FullMassive(link, arr, end);
 
@@ -58,7 +19,7 @@ char* MostFrequentString(char* link) {
 	}
 
 	for (int i = 0; i < end; i++) {
-		for (int j = 0;j < end ; j++) {
+		for (int j = 0; j < end; j++) {
 			if (i != j) {
 				if (strcmp(arr[i], arr[j]) == 0) {
 					line[i]++;
@@ -66,7 +27,7 @@ char* MostFrequentString(char* link) {
 			}
 		}
 	}
-	
+
 	fclose(file);
 
 	return arr[Max(line, end)];
@@ -75,10 +36,7 @@ char* MostFrequentString(char* link) {
 int main() {
 	
 	char link[] = { "d:\\Valeria\\file.txt" };
-
-	
 	cout << MostFrequentString(link);
-
 	
 	return 0;
 }
