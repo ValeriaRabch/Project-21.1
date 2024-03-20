@@ -4,6 +4,22 @@
 
 using namespace std;
 
+int Line(char* link) {
+
+	FILE* file;
+	file = fopen(link, "r");
+	char s = fgetc(file);
+	int count = 1;
+	while (s != EOF) {
+		if (s == '\n') {
+			count++;
+		}
+		s = fgetc(file);
+	}
+	fclose(file);
+	return count;
+}
+
 char* MostFrequentString(char* link) {
 	FILE* file;
 	file = fopen(link, "r");
