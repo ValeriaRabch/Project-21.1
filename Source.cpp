@@ -20,6 +20,17 @@ int Line(char* link) {
 	return count;
 }
 
+void FullMassive(char* link, char arr[50][30], int end) {
+
+	FILE* file;
+	file = fopen(link, "r");
+
+	for (int i = 0; i < end - 1; i++) {
+		fgets(arr[i], 50, file);
+	}
+	fclose(file);
+}
+
 char* MostFrequentString(char* link) {
 	FILE* file;
 	file = fopen(link, "r");
