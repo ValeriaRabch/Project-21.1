@@ -31,6 +31,18 @@ void FullMassive(char* link, char arr[50][30], int end) {
 	fclose(file);
 }
 
+int Max(int arr[], int size) {
+
+	int max = arr[0], index = 0;
+	for (int i = 1; i < size; i++) {
+		if (arr[i] > max) {
+			max = arr[i];
+			index = i;
+		}
+	}
+	return index;
+}
+
 char* MostFrequentString(char* link) {
 	FILE* file;
 	file = fopen(link, "r");
